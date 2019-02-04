@@ -23,9 +23,25 @@ public class CreateAccountController {
     @ResponseBody
     public ResponseEntity<AccountCreationResponse> createAccount(@RequestBody Client client) {
         logger.info("Getting Request for account creation: "+ client);
+
+        if(!validateRequest(client)) {
+            AccountCreationResponse accountCreationResponse = new AccountCreationResponse();
+            accountCreationResponse.setStatus("FAILURE");
+            accountCreationResponse.setMessage("BAD REQUEST");
+            return new ResponseEntity<>(accountCreationResponse, HttpStatus.BAD_REQUEST);
+        }
         AccountCreationResponse accountCreationResponse  = createAccountProcessor.processRequest(client);
         return new ResponseEntity<>(accountCreationResponse, HttpStatus.OK);
     }
 
+
+    private boolean validateRequest(Client client) {
+
+        return (null != client.getAccountInfos() &&  0 != client.getAccountInfos().getAccountType() &&
+                null != client.getAccountInfos().getAdharId() &&
+                null != client.getAccountInfos().getPanNumber()) ;
+
+
+    }
 
 }
