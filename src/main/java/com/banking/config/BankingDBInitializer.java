@@ -8,7 +8,6 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
@@ -21,7 +20,7 @@ public class BankingDBInitializer {
     public DriverManagerDataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/banking");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/bankinghibernate");
         dataSource.setUsername("appuser");
         dataSource.setPassword("appuser");
 
@@ -35,10 +34,7 @@ public class BankingDBInitializer {
 
     }
 
-    @Bean
-    public PlatformTransactionManager txManager() {
-        return new DataSourceTransactionManager(dataSource());
-    }
+
 
     @Bean
     public LocalSessionFactoryBean sessionFactoryBean() {
@@ -62,7 +58,7 @@ public class BankingDBInitializer {
             {
                 setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
                 setProperty("hibernate.show_sql", "true");
-                setProperty("hibernate.hbm2ddl.auto", "update");
+                setProperty("hibernate.hbm2ddl.auto", "create");
             }
         };
     }
