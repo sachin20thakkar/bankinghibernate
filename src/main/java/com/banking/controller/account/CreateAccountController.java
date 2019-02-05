@@ -15,9 +15,12 @@ import org.springframework.web.bind.annotation.*;
 public class CreateAccountController {
 
     private Logger logger = LoggerFactory.getLogger(CreateAccountController.class);
+    private CreateAccountProcessor createAccountProcessor;
 
     @Autowired
-    private CreateAccountProcessor createAccountProcessor;
+    public CreateAccountController(CreateAccountProcessor createAccountProcessor) {
+        this.createAccountProcessor = createAccountProcessor;
+    }
 
     @RequestMapping(value = "/createAccount", method = RequestMethod.POST, produces = "application/json")
     @ResponseBody

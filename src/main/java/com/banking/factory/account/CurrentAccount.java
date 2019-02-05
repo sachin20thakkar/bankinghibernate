@@ -5,6 +5,7 @@ import com.banking.model.client.Client;
 import com.banking.persistence.dao.account.CreateAccountDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service("currentAccount")
@@ -13,6 +14,7 @@ public class CurrentAccount implements IAccountType {
     private Logger logger = LoggerFactory.getLogger(CurrentAccount.class);
     private CreateAccountDAO createAccountDAO;
 
+    @Autowired
     public CurrentAccount(CreateAccountDAO createAccountDAO) {
         this.createAccountDAO = createAccountDAO;
     }
