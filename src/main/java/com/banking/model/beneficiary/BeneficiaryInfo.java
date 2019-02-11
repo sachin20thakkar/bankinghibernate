@@ -5,6 +5,10 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "beneficiary_info")
+@NamedQueries({
+        @NamedQuery(name = "BENEFICIARY.SELECT_CLIENTID",
+                query = "select b from BeneficiaryInfo b where b.clientId = :clientId")
+})
 public class BeneficiaryInfo {
 
     @Id

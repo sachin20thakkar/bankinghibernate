@@ -43,7 +43,7 @@ public class BeneficiaryProcessor {
     }
 
 
-    public BeneficiaryReponse getBeneficiaryInfo(long clientId) {
+    public BeneficiaryReponse getBeneficiaryInfo(int clientId) {
 
         BeneficiaryReponse beneficiaryReponse = new BeneficiaryReponse();
         try {

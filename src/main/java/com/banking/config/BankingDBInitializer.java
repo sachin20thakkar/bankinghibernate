@@ -71,7 +71,7 @@ public class BankingDBInitializer {
             {
                 setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5Dialect");
                 setProperty("hibernate.show_sql", "true");
-                setProperty("hibernate.hbm2ddl.auto", "create");
+                setProperty("hibernate.hbm2ddl.auto", "update");
             }
         };
     }

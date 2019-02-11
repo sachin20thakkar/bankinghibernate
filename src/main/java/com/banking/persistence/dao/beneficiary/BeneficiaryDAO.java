@@ -9,7 +9,7 @@ public interface BeneficiaryDAO {
 
     int addBeneficiary(BeneficiaryInfo beneficiaryInfo) throws BankingException;
 
-    List<BeneficiaryInfo> getBeneficiary(long clientId) throws BankingException;
+    List<BeneficiaryInfo> getBeneficiary(int clientId) throws BankingException;
 
     void updateBeneficiary(BeneficiaryInfo beneficiaryInfo) throws BankingException;
 
